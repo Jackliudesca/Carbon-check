@@ -39,6 +39,42 @@ button{cursor:pointer}
 a{color:inherit}
 
 .container{width:min(1160px,calc(100% - 32px));margin:0 auto}
+
+body:before, body:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(2px)}
+body:before{width:420px;height:420px;left:-190px;top:110px;background:radial-gradient(circle,rgba(20,184,166,.11),transparent 68%)}
+body:after{width:520px;height:520px;right:-250px;bottom:40px;background:radial-gradient(circle,rgba(109,40,217,.08),transparent 68%)}
+.brand{position:relative;padding-left:20px;font-weight:800;letter-spacing:.02em}
+.brand:before{content:"";position:absolute;left:0;top:5px;width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,#14b8a6,#6d28d9);box-shadow:0 0 0 5px rgba(20,184,166,.08)}
+.hero{position:relative}
+.hero:after{content:"";position:absolute;right:0;top:44px;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(20,184,166,.15),rgba(109,40,217,.04) 58%,transparent 70%);pointer-events:none}
+.hero-note{position:relative;overflow:hidden}
+.hero-note:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,#14b8a6,#6d28d9)}
+.cards{position:relative}
+.card{border-color:#e2e8f0;min-height:190px;text-align:left}
+.card:before{content:"";position:absolute;left:0;top:0;right:0;height:4px;background:#cbd5e1}
+.card[data-module="1"]:before{background:linear-gradient(90deg,#0f766e,#2dd4bf)}
+.card[data-module="2"]:before{background:linear-gradient(90deg,#b45309,#f59e0b)}
+.card[data-module="3"]:before{background:linear-gradient(90deg,#475569,#94a3b8)}
+.card[data-module="4"]:before{background:linear-gradient(90deg,#6d28d9,#a78bfa)}
+.card:focus-visible,.cta:focus-visible,.nav button:focus-visible,.segmented button:focus-visible,.toggle:focus-visible{outline:3px solid rgba(20,184,166,.25);outline-offset:3px}
+.lab{scroll-margin-top:82px}
+.section-head{position:relative}
+.section-head:after{content:"";position:absolute;left:0;bottom:-9px;width:54px;height:3px;border-radius:99px;background:linear-gradient(90deg,#0f766e,#6d28d9)}
+.panel{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.panel:hover{transform:translateY(-2px);box-shadow:0 18px 45px rgba(15,23,42,.10);border-color:#d6dde8}
+.range-value{box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 6px 15px rgba(15,23,42,.08)}
+.result{position:relative;overflow:hidden}
+.result:after{content:"";position:absolute;width:220px;height:220px;right:-80px;top:-80px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,.18),transparent 68%)}
+.result-quote{position:relative;z-index:1}
+@media(max-width:650px){.hero:after{display:none}.home-final-cta{justify-content:stretch}.home-final-cta .cta{width:100%}}
+
+.hero-lens{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px;max-width:860px}
+.hero-lens>div{padding:13px 14px;border:1px solid #e2e8f0;background:rgba(255,255,255,.82);backdrop-filter:blur(8px);border-radius:16px;box-shadow:0 8px 24px rgba(15,23,42,.04)}
+.hero-lens span{display:block;color:#94a3b8;font-size:10px;font-weight:900;letter-spacing:.08em}
+.hero-lens strong{display:block;margin-top:5px;font-size:17px}
+.hero-lens small{display:block;margin-top:3px;color:#64748b;font-size:11px}
+@media(max-width:650px){.hero-lens{grid-template-columns:1fr 1fr}}
+
 .topbar{
   position:sticky;top:0;z-index:20;
   backdrop-filter:blur(14px);
@@ -48,7 +84,6 @@ a{color:inherit}
 .topbar-inner{
   min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px;
 }
-.brand{font-weight:800;letter-spacing:.02em}
 .brand small{display:block;color:var(--muted);font-size:11px;font-weight:600;margin-top:2px}
 .nav{display:flex;gap:8px;overflow:auto}
 .nav button{
@@ -186,22 +221,15 @@ a{color:inherit}
 .chart{
   width:100%;height:250px;background:#fafafa;border:1px solid var(--line);border-radius:17px;display:block;margin-top:15px
 }
+.chart-axis{font-size:11px;fill:#64748b}
+.chart-grid{stroke:#e2e8f0;stroke-width:1;stroke-dasharray:4 5}
+.chart-axis-line{stroke:#94a3b8;stroke-width:1.5}
+.chart-label{font-size:11px;fill:#64748b}
+.chart-payback{font-size:11px;fill:#6d28d9;font-weight:800}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:12px;color:#64748b}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
 .legend .a{background:#6d28d9}.legend .b{background:#94a3b8}
-
-.final-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.checks{display:grid;gap:10px;margin-top:16px}
-.check{
-  display:flex;justify-content:space-between;align-items:center;gap:14px;
-  padding:15px 16px;border:1px solid var(--line);border-radius:15px;background:#fafafa
-}
-.check strong{display:block}.check p{margin:4px 0 0;font-size:12px;color:#64748b}
-.check .status{font-size:12px;font-weight:800;padding:8px 10px;border-radius:999px;white-space:nowrap}
-.status.wait{background:#f1f5f9;color:#64748b}
-.status.open{background:#ecfeff;color:#0f766e}
-.status.attn{background:#fff7ed;color:#9a3412}
 
 .result{
   min-height:100%;
@@ -228,11 +256,71 @@ a{color:inherit}
 .cta.teal{background:#0f766e}
 .cta.purple{background:#6d28d9}
 .cta.reset{background:#e2e8f0;color:#334155}
+
+.case-panel{
+  margin-top:18px;background:#fff;border:1px solid #dbeafe;border-radius:22px;
+  box-shadow:0 12px 35px rgba(15,23,42,.06);padding:22px
+}
+.case-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.case-title{font-size:21px;font-weight:850;margin:0}
+.case-source{margin-top:7px;color:#64748b;font-size:12px;line-height:1.7}
+.case-source a{color:#0f766e;text-decoration:none;font-weight:750}
+.case-source a:hover{text-decoration:underline}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:17px}
+.case-box{border:1px solid #e2e8f0;background:#f8fafc;border-radius:17px;padding:17px}
+.case-kpi{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.case-stat{border:1px solid #e2e8f0;background:#fff;border-radius:14px;padding:13px}
+.case-stat strong{display:block;font-size:23px;margin-top:4px}
+.case-stat small{display:block;color:#94a3b8;font-size:11px;line-height:1.5}
+.case-formula{margin-top:12px;padding:13px 14px;border-radius:14px;background:#0f172a;color:#fff;
+  font-family:Georgia,"Times New Roman",serif;font-size:18px;line-height:1.7}
+.case-footnote{margin-top:12px;padding:11px 13px;border:1px dashed #cbd5e1;border-radius:14px;
+  color:#64748b;background:#fff;font-size:11px;line-height:1.7}
+.case-badge{display:inline-flex;align-items:center;gap:6px;padding:7px 10px;border-radius:999px;
+  background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:850;white-space:nowrap}
+@media(max-width:650px){.case-grid{grid-template-columns:1fr}.case-kpi{grid-template-columns:1fr}}
+
+.conclusion-section{padding-top:24px}
+.conclusion-wrap{
+  background:radial-gradient(circle at 88% 8%, rgba(15,118,110,.16), transparent 28%),
+    linear-gradient(135deg,#0f172a 0%,#111827 58%,#0f172a 100%);
+  color:#fff;border-radius:30px;padding:42px 36px 34px;
+  box-shadow:0 24px 60px rgba(15,23,42,.18);overflow:hidden;position:relative
+}
+.conclusion-kicker{color:#5eead4;font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+.conclusion-title{margin:12px 0 10px;font-size:clamp(32px,5vw,56px);line-height:1.05;letter-spacing:-.04em}
+.conclusion-lead{margin:0;color:#cbd5e1;font-size:16px;line-height:1.75;max-width:740px}
+.conclusion-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.conclusion-card{
+  background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);
+  border-radius:18px;padding:18px;min-height:185px
+}
+.conclusion-card span{color:#94a3b8;font-size:11px;font-weight:850;letter-spacing:.1em}
+.conclusion-card h3{margin:12px 0 9px;font-size:18px}
+.conclusion-card p{margin:0;color:#cbd5e1;font-size:13px;line-height:1.7}
+.conclusion-quote{
+  margin-top:18px;padding:22px 24px;border-radius:19px;
+  background:linear-gradient(90deg,rgba(20,184,166,.12),rgba(255,255,255,.04));
+  border:1px solid rgba(94,234,212,.18);display:flex;align-items:flex-start;gap:14px
+}
+.quote-mark{font-family:Georgia,serif;font-size:54px;line-height:.7;color:#5eead4}
+.conclusion-quote strong{font-size:20px}
+.conclusion-quote p{margin:7px 0 0;color:#cbd5e1;font-size:14px}
+@media(max-width:920px){
+  .conclusion-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .conclusion-wrap{padding:30px 20px 25px;border-radius:24px}
+  .conclusion-grid{grid-template-columns:1fr}
+  .conclusion-card{min-height:auto}
+}
+
+
 .footer{padding:38px 0 58px;color:#94a3b8;font-size:12px;text-align:center}
 
 @media (max-width: 920px){
   .cards{grid-template-columns:1fr 1fr}
-  .lab-grid,.final-grid{grid-template-columns:1fr}
+  .lab-grid{grid-template-columns:1fr}
 }
 @media (max-width: 650px){
   .container{width:min(100% - 22px,1160px)}
@@ -259,7 +347,7 @@ a{color:inherit}
       <button data-scroll="module-2">反弹</button>
       <button data-scroll="module-3">指标</button>
       <button data-scroll="module-4">时间</button>
-      <button data-scroll="final">四重检验</button>
+      <button data-scroll="conclusion">结论</button>
     </nav>
   </div>
 </header>
@@ -275,6 +363,12 @@ a{color:inherit}
     <div class="hero-note">
       <b>怎么玩：</b>点击下面四个实验。不要急着找“正确答案”，先改变参数，再观察系统如何变化。
       本页面中的数值均为课堂演示用的<strong>示意模型</strong>，用于解释机制，不代表真实项目测算结果。
+    </div>
+    <div class="hero-lens">
+      <div><span>01</span><strong>边界</strong><small>算了哪些碳？</small></div>
+      <div><span>02</span><strong>反弹</strong><small>需求变了吗？</small></div>
+      <div><span>03</span><strong>指标</strong><small>数字代表真相吗？</small></div>
+      <div><span>04</span><strong>时间</strong><small>多久才能回本？</small></div>
     </div>
   </section>
 
@@ -398,6 +492,65 @@ a{color:inherit}
         </div>
       </div>
     </div>
+
+    <div class="case-panel">
+      <div class="case-head">
+        <div>
+          <div class="case-badge">真实案例 · 美国居民车辆</div>
+          <h3 class="case-title" style="margin-top:10px">案例三｜燃油经济性提高，行驶里程也可能增加</h3>
+          <div class="case-source">
+            Munyon, Bowen &amp; Holcombe (2018), <i>Energy Research &amp; Social Science</i>, 38, 19–27。
+            研究使用美国2009 National Household Travel Survey（NHTS）等数据，并控制驾驶员、家庭和车辆属性。
+            研究结果报告：<strong>燃油经济性提高1%，与VMT（车辆行驶里程）提高1.2%相关</strong>。
+            <a href="https://doi.org/10.1016/j.erss.2018.01.007" target="_blank" rel="noopener">查看论文 DOI ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-grid">
+        <div class="case-box">
+          <div class="mini-label">按论文估计系数做互动演示</div>
+          <div class="range-row" style="margin-bottom:8px">
+            <div>
+              <div class="range-title"><span>燃油经济性提升</span><span id="caseEffText">10%</span></div>
+              <input id="caseEff" class="range" type="range" min="0" max="30" value="10" step="1">
+            </div>
+            <div class="range-value" id="caseEffBox">10%</div>
+          </div>
+
+          <div class="case-formula">VMT变化 ≈ 1.2 × 燃油经济性变化</div>
+
+          <div class="case-kpi">
+            <div class="case-stat">
+              <small>燃油经济性</small>
+              <strong id="caseEffVal">+10%</strong>
+            </div>
+            <div class="case-stat">
+              <small>VMT变化</small>
+              <strong id="caseVmtVal">+12%</strong>
+            </div>
+            <div class="case-stat">
+              <small>燃料消耗变化</small>
+              <strong id="caseFuelVal">+1.8%</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-box">
+          <div class="mini-label">为什么会出现反弹？</div>
+          <p style="margin-top:9px">
+            论文使用“燃油经济性（miles per gallon）”衡量效率，使用VMT衡量使用量。
+            因为每英里所需燃料与MPG成反比，若燃油经济性提高了x%，则单位里程燃料消耗变为原来的1/(1+x)；
+            按论文估计的1.2倍系数，VMT变为原来的1+1.2x。
+          </p>
+          <div class="case-formula">总燃料使用比 = (1 + 1.2x) / (1 + x)</div>
+          <div class="case-footnote">
+            例如提升10%时：VMT约增加12%，单位里程燃料需求下降约9.1%，两者合在一起，总燃料使用量约增加1.8%。
+            这里把论文估计系数用于课堂上的局部线性演示；它不是论文对所有幅度变化的精确预测。
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Module 3 -->
@@ -405,35 +558,85 @@ a{color:inherit}
     <div class="section-head">
       <div>
         <h2 class="section-title">实验三｜指标陷阱</h2>
-        <p class="section-sub">古德哈特定律 + 麦纳马拉谬误：当“容易测的东西”变成“必须完成的东西”。</p>
+        <p class="section-sub">不要让一个指标替你定义“减排”——先改变系统，再观察不同指标会告诉你什么。</p>
       </div>
     </div>
+
     <div class="lab-grid">
       <div class="panel">
-        <div class="mini-label">开启治理方式</div>
+        <div class="mini-label">先改变真实的系统参数</div>
+        <div class="range-row">
+          <div>
+            <div class="range-title"><span>需求 / 经济活动增长</span><span id="activityInputText">29%</span></div>
+            <input id="activityInput" class="range" type="range" min="0" max="60" value="29" step="1">
+          </div>
+          <div class="range-value" id="activityInputBox">29%</div>
+        </div>
+        <div class="range-row">
+          <div>
+            <div class="range-title"><span>单位碳强度下降</span><span id="intensityInputText">18%</span></div>
+            <input id="intensityInput" class="range" type="range" min="0" max="40" value="18" step="1">
+          </div>
+          <div class="range-value" id="intensityInputBox">18%</div>
+        </div>
+<div class="metric-grid" style="margin-top:14px">
+          <div class="stat-box">
+            <span class="mini-label">基准活动量</span>
+            <strong>100</strong>
+            <span class="small">归一化</span>
+          </div>
+          <div class="stat-box">
+            <span class="mini-label">基准绝对排放</span>
+            <strong>100</strong>
+            <span class="small">归一化</span>
+          </div>
+        </div>
+
+        <div class="mini-label" style="margin-top:18px">选择你正在“看”的指标</div>
         <div class="toggle-row">
-          <div><strong>只考核“碳强度”</strong><p>关注单位GDP/单位产出的排放。</p></div>
-          <button class="toggle on" id="tIntensity" aria-label="切换碳强度考核"></button>
+          <div><strong>碳强度</strong><p>单位GDP / 单位产出的排放变化。</p></div>
+          <button class="toggle on" id="tIntensity" aria-label="显示碳强度"></button>
         </div>
         <div class="toggle-row">
-          <div><strong>加入“绝对排放总量”</strong><p>同时观察系统最终排放了多少。</p></div>
-          <button class="toggle" id="tAbsolute" aria-label="切换绝对排放"></button>
+          <div><strong>绝对排放总量</strong><p>整个系统最终排放了多少。</p></div>
+          <button class="toggle" id="tAbsolute" aria-label="显示绝对排放"></button>
         </div>
         <div class="toggle-row">
-          <div><strong>加入“行为与消费”</strong><p>考虑难以被单一数字代表的真实变化。</p></div>
-          <button class="toggle" id="tBehavior" aria-label="切换行为指标"></button>
+          <div><strong>需求活动量</strong><p>生产、出行、消费等活动规模变化。</p></div>
+          <button class="toggle" id="tBehavior" aria-label="显示需求活动量"></button>
         </div>
-        <div class="note">重点不是“哪个指标好”，而是：单一指标越接近考核目标，就越需要警惕“为了指标优化指标”的行为。</div>
+
+        <div class="note">现在“按钮”只负责选择你想看哪些指标；真正让数据变化的是上面的两个系统参数。这样可以把“系统发生了什么”和“我们选择测什么”严格区分开。</div>
       </div>
+
       <div class="panel">
-        <div class="mini-label">同一个系统，三种看法</div>
+        <div class="mini-label">同一个系统，三个指标</div>
         <div class="metric-grid">
-          <div class="stat-box"><span class="mini-label">碳强度</span><strong id="mIntensity">−18%</strong><span class="small">看起来在进步</span></div>
-          <div class="stat-box"><span class="mini-label">绝对排放</span><strong id="mAbsolute">+6%</strong><span class="small">总量仍然增加</span></div>
-          <div class="stat-box"><span class="mini-label">需求活动量</span><strong id="mActivity">+29%</strong><span class="small">使用与消费扩张</span></div>
-          <div class="stat-box"><span class="mini-label">信息完整度</span><strong id="mCoverage">33%</strong><span class="small">当前纳入的信息</span></div>
+          <div class="stat-box" id="metricCardIntensity">
+            <span class="mini-label">碳强度</span>
+            <strong id="mIntensity">−18%</strong>
+            <span class="small">单位排放变化</span>
+          </div>
+          <div class="stat-box" id="metricCardAbsolute">
+            <span class="mini-label">绝对排放</span>
+            <strong id="mAbsolute">+5.8%</strong>
+            <span class="small">总量相对基准变化</span>
+          </div>
+          <div class="stat-box" id="metricCardActivity">
+            <span class="mini-label">需求活动量</span>
+            <strong id="mActivity">+29%</strong>
+            <span class="small">系统活动规模变化</span>
+          </div>
+          <div class="stat-box">
+            <span class="mini-label">信息完整度</span>
+            <strong id="mCoverage">33%</strong>
+            <span class="small">当前显示的指标数量</span>
+          </div>
         </div>
-        <div class="note" id="metricMessage">目前你只开启了一个容易量化的指标，系统可能因此形成“看起来很低碳”的表象。</div>
+<div class="note" id="metricMessage">你现在只看碳强度：单位排放下降18%，但如果需求增长29%，绝对排放并没有同步下降。</div>
+        <div class="note" style="margin-top:10px">
+          <b>古德哈特定律的切入点：</b>一旦某个指标成为考核目标，系统参与者可能围绕这个指标优化；因此需要同时观察强度、总量和活动规模，而不能只盯住一个数字。
+        </div>
       </div>
     </div>
   </section>
@@ -448,7 +651,7 @@ a{color:inherit}
     </div>
     <div class="lab-grid">
       <div class="panel">
-        <div class="mini-label">设定一个示意项目</div>
+        <div class="mini-label">设定两个核心参数</div>
 
         <div class="range-row">
           <div>
@@ -466,18 +669,12 @@ a{color:inherit}
           <div class="range-value" id="saveBox">22</div>
         </div>
 
-        <div class="range-row">
-          <div>
-            <div class="range-title"><span>项目运行年限</span><span id="lifeText">20 年</span></div>
-            <input id="life" class="range" type="range" min="5" max="35" value="20">
-          </div>
-          <div class="range-value" id="lifeBox">20</div>
+        <div class="metric-grid" style="margin-top:8px">
+          <div class="stat-box"><span class="mini-label">回本时间</span><strong id="paybackMini">5.5</strong><span class="small">年</span></div>
+          <div class="stat-box"><span class="mini-label">图表时间窗</span><strong id="windowMini">15</strong><span class="small">年（自动调整）</span></div>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-line"></div>
-          <div class="timeline-items" id="timelineItems"></div>
-        </div>
+        <div class="note">这里删掉“项目运行年限”滑块：它本身不会改变碳回本时间，只决定你观察多久。图表现在会根据回本时间自动设置展示窗口，把重点放在“碳债有多大、每年还多少、多久回本”三个核心量上。</div>
       </div>
 
       <div class="panel">
@@ -485,13 +682,19 @@ a{color:inherit}
         <div class="big-number" id="paybackValue">5.5 <small>年</small></div>
         <p id="paybackText">大约运行5.5年后，累计避免排放超过建设阶段新增排放。</p>
         <svg class="chart" viewBox="0 0 620 250" preserveAspectRatio="none" aria-label="累计碳排放示意图">
-          <line x1="56" y1="210" x2="590" y2="210" stroke="#cbd5e1" stroke-width="2"/>
-          <line x1="56" y1="28" x2="56" y2="210" stroke="#cbd5e1" stroke-width="2"/>
+          <!-- dynamic grid/ticks -->
+          <g id="chartGrid"></g>
+          <line id="yAxis" class="chart-axis-line" x1="56" y1="28" x2="56" y2="210"/>
+          <line id="xAxis" class="chart-axis-line" x1="56" y1="210" x2="590" y2="210"/>
+          <g id="xTicks"></g>
+          <g id="yTicks"></g>
           <path id="debtArea" d="" fill="rgba(148,163,184,.18)" stroke="none"></path>
           <path id="saveLine" d="" fill="none" stroke="#6d28d9" stroke-width="4" stroke-linecap="round"></path>
           <path id="crossLine" d="" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 7"></path>
-          <text x="64" y="24" fill="#64748b" font-size="12">累计碳量（示意）</text>
-          <text x="482" y="232" fill="#64748b" font-size="12">年份 →</text>
+          <circle id="crossPoint" cx="0" cy="0" r="5" fill="#6d28d9" opacity="0"></circle>
+          <text x="64" y="19" fill="#64748b" font-size="12">累计避免排放 / 建设碳债（单位）</text>
+          <text x="492" y="239" fill="#64748b" font-size="11">年份</text>
+          <text id="paybackLabel" class="chart-payback" x="0" y="0">回本点</text>
         </svg>
         <div class="legend"><span><i class="a"></i>累计避免排放</span><span><i class="b"></i>建设阶段“碳债”</span></div>
         <div class="note">这里的“碳债”是课堂中的概念化表达。真实项目需要结合材料、能源结构、寿命、利用率、替代情景等进行生命周期核算。</div>
@@ -499,50 +702,48 @@ a{color:inherit}
     </div>
   </section>
 
-  <!-- Final -->
-  <section id="final" class="container section lab">
-    <div class="section-head">
-      <div>
-        <h2 class="section-title">四重检验</h2>
-        <p class="section-sub">最后不要问“它是不是绿色”，而是问四个更具体的问题。</p>
-      </div>
-      <button class="cta reset" id="resetAll">重置实验</button>
-    </div>
+  <!-- Conclusion -->
+  <section id="conclusion" class="container section conclusion-section">
+    <div class="conclusion-wrap">
+      <div class="conclusion-kicker">THE SYSTEM VIEW</div>
+      <h2 class="conclusion-title">所以，什么才叫真正的低碳？</h2>
+      <p class="conclusion-lead">
+        一个技术可以让某个环节的数字变小，但真正的低碳，需要把整个系统一起看。
+      </p>
 
-    <div class="final-grid">
-      <div class="panel">
-        <div class="checks">
-          <div class="check">
-            <div><strong>01 · 边界</strong><p>有没有把生命周期的重要环节纳入？</p></div>
-            <span class="status wait" id="c1">待检验</span>
-          </div>
-          <div class="check">
-            <div><strong>02 · 反弹</strong><p>单位效率提升后，需求有没有同步变化？</p></div>
-            <span class="status wait" id="c2">待检验</span>
-          </div>
-          <div class="check">
-            <div><strong>03 · 指标</strong><p>指标下降是否同时对应总量变化？</p></div>
-            <span class="status wait" id="c3">待检验</span>
-          </div>
-          <div class="check">
-            <div><strong>04 · 时间</strong><p>前期高碳投入需要多久才能被抵消？</p></div>
-            <span class="status wait" id="c4">待检验</span>
-          </div>
+      <div class="conclusion-grid">
+        <div class="conclusion-card">
+          <span>01</span>
+          <h3>看全生命周期</h3>
+          <p>不要只看"使用阶段"。材料、制造、能源、使用与回收都可能影响最终结果。</p>
         </div>
-        <button class="cta teal" id="runCheck">开始四重检验 →</button>
+        <div class="conclusion-card">
+          <span>02</span>
+          <h3>看绝对总量</h3>
+          <p>单位效率下降之后，需求可能继续增长。单位指标变好，不代表总排放一定下降。</p>
+        </div>
+        <div class="conclusion-card">
+          <span>03</span>
+          <h3>看完整指标</h3>
+          <p>一个指标只能告诉你系统的一部分。真正的判断需要同时观察强度、总量与活动规模。</p>
+        </div>
+        <div class="conclusion-card">
+          <span>04</span>
+          <h3>看时间周期</h3>
+          <p>转型过程中可能先产生建设阶段排放，再通过长期运行逐步抵消，需要考虑"什么时候回本"。</p>
+        </div>
       </div>
 
-      <div class="panel result">
-        <div class="kicker">THE SYSTEM VIEW</div>
-        <h3>从“低碳产品”走向“低碳系统”</h3>
-        <p>一个技术可以在局部环节显著降低排放，同时在更大的系统里存在边界、需求、指标或时间上的复杂性。</p>
-        <div class="result-quote">
-          <b>边界</b>决定你看见什么，
-          <b>行为</b>决定需求怎么变化，
-          <b>指标</b>决定系统怎么响应，
-          <b>时间</b>决定减排何时兑现。
+      <div class="conclusion-quote">
+        <div class="quote-mark">"</div>
+        <div>
+          <strong>低碳，不只是让一个数字变小。</strong>
+          <p>而是让整个系统的净碳排放真正下降。</p>
         </div>
-        <p style="font-size:13px">这四个实验不是为了否定低碳转型，而是提醒我们：真正需要被优化的，是整个系统的净碳排放。</p>
+      </div>
+
+      <div style="margin-top:28px;display:flex;justify-content:center">
+        <button class="cta reset" id="resetAll">重置所有实验</button>
       </div>
     </div>
   </section>
@@ -559,9 +760,10 @@ const qsa = s => [...document.querySelectorAll(s)];
 function showLab(id){
   qsa('.lab').forEach(x=>x.classList.remove('active'));
   const el = document.querySelector(id);
-  if(el) el.classList.add('active');
+  if(!el) return;
+  el.classList.add('active');
   qsa('.nav button').forEach(b=>b.classList.toggle('active', b.dataset.scroll === id.slice(1)));
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
 }
 
 qsa('.card').forEach(card => card.addEventListener('click', ()=>showLab('#module-'+card.dataset.module)));
@@ -628,100 +830,152 @@ function updateRebound(){
 }
 ['eff','reb'].forEach(id=>qs('#'+id).addEventListener('input',updateRebound));
 
+
+/* Real-world case: Munyon, Bowen & Holcombe (2018) */
+function updateRealCase(){
+  const effPct = +qs('#caseEff').value;
+  const x = effPct / 100;
+  const vmtPct = 1.2 * effPct;
+  const fuelRatio = (1 + 1.2*x) / (1 + x);
+  const fuelPct = (fuelRatio - 1) * 100;
+  qs('#caseEffText').textContent = `${effPct}%`;
+  qs('#caseEffBox').textContent = `${effPct}%`;
+  qs('#caseEffVal').textContent = `+${effPct}%`;
+  qs('#caseVmtVal').textContent = `+${vmtPct.toFixed(1)}%`;
+  qs('#caseFuelVal').textContent = `${fuelPct>=0?'+':''}${fuelPct.toFixed(1)}%`;
+}
+qs('#caseEff').addEventListener('input', updateRealCase);
+updateRealCase();
+
 /* Module 3 */
-function setToggle(id){
-  const el=qs('#'+id);
+function updateMetrics(){
+  const activity = +qs('#activityInput').value / 100;
+  const intensityDrop = +qs('#intensityInput').value / 100;
+  const absoluteRatio = (1 + activity) * (1 - intensityDrop);
+  const absoluteDelta = (absoluteRatio - 1) * 100;
+  const activityPct = activity * 100;
+  const intensityPct = intensityDrop * 100;
+
+  qs('#activityInputText').textContent = `${activityPct.toFixed(0)}%`;
+  qs('#activityInputBox').textContent = `${activityPct.toFixed(0)}%`;
+  qs('#intensityInputText').textContent = `${intensityPct.toFixed(0)}%`;
+  qs('#intensityInputBox').textContent = `${intensityPct.toFixed(0)}%`;
+
+  qs('#mIntensity').textContent = intensityPct === 0 ? '0%' : `−${intensityPct.toFixed(0)}%`;
+  qs('#mAbsolute').textContent = `${absoluteDelta >= 0 ? '+' : ''}${absoluteDelta.toFixed(1)}%`;
+  qs('#mActivity').textContent = `+${activityPct.toFixed(0)}%`;
+
+  const intensity = qs('#tIntensity').classList.contains('on');
+  const absolute = qs('#tAbsolute').classList.contains('on');
+  const behavior = qs('#tBehavior').classList.contains('on');
+  const coverage = [intensity, absolute, behavior].filter(Boolean).length;
+  qs('#mCoverage').textContent = `${Math.round(coverage / 3 * 100)}%`;
+
+  qs('#metricCardIntensity').style.opacity = intensity ? '1' : '.28';
+  qs('#metricCardAbsolute').style.opacity = absolute ? '1' : '.28';
+  qs('#metricCardActivity').style.opacity = behavior ? '1' : '.28';
+
+  const a = (1 + activity).toFixed(2);
+  const i = (1 - intensityDrop).toFixed(2);
+  qs('#metricFormula').textContent = `${a} × ${i} = ${absoluteRatio.toFixed(4)} → 绝对排放 ${absoluteDelta >= 0 ? '+' : ''}${absoluteDelta.toFixed(1)}%`;
+
+  let msg = '';
+  if (absoluteDelta > 0.05 && intensityPct > 0 && activityPct > 0) {
+    msg = `当前情景中，碳强度下降${intensityPct.toFixed(0)}%，但需求活动量增长${activityPct.toFixed(0)}%，所以绝对排放仍上升${absoluteDelta.toFixed(1)}%。`;
+  } else if (absoluteDelta < -0.05) {
+    msg = `当前情景中，碳强度下降${intensityPct.toFixed(0)}%，其收益超过了需求增长${activityPct.toFixed(0)}%，因此绝对排放下降${Math.abs(absoluteDelta).toFixed(1)}%。`;
+  } else {
+    msg = `当前情景接近“抵消点”：需求增长与碳强度改善大致互相抵消，绝对排放变化约为${absoluteDelta.toFixed(1)}%。`;
+  }
+
+  if (coverage === 1 && intensity) {
+    msg += '  但你目前只打开了碳强度指标，仍可能看不到总量发生了什么。';
+  } else if (coverage === 2 && intensity && absolute) {
+    msg += '  加入绝对排放后，强度与总量之间的差异开始显现。';
+  } else if (coverage === 3) {
+    msg += '  三个指标同时打开后，可以看到“单位效率、总量、活动规模”如何共同决定系统结果。';
+  }
+  qs('#metricMessage').textContent = msg;
+}
+['activityInput','intensityInput'].forEach(id => qs('#'+id).addEventListener('input', updateMetrics));
+['tIntensity','tAbsolute','tBehavior'].forEach(id => qs('#'+id).addEventListener('click', ()=>{
+  const el = qs('#'+id);
   el.classList.toggle('on');
   updateMetrics();
-}
-['tIntensity','tAbsolute','tBehavior'].forEach(id=>qs('#'+id).addEventListener('click',()=>setToggle(id)));
-function updateMetrics(){
-  const intensity=qs('#tIntensity').classList.contains('on');
-  const absolute=qs('#tAbsolute').classList.contains('on');
-  const behavior=qs('#tBehavior').classList.contains('on');
-  const coverage=(intensity?1:0)+(absolute?1:0)+(behavior?1:0);
-  qs('#mCoverage').textContent=`${Math.round(coverage/3*100)}%`;
-  qs('#mIntensity').textContent=intensity?'−18%':'—';
-  qs('#mAbsolute').textContent=absolute?'−4%':'+6%';
-  qs('#mActivity').textContent=behavior?'+12%':'+29%';
-  let msg='';
-  if(!intensity && !absolute && !behavior) msg='没有设置指标时，系统几乎无法被持续观察；但指标化本身也不是终点。';
-  else if(intensity && !absolute) msg='目前主要观察碳强度：一个常见的“看起来进步”的视角，但仍可能遗漏总量变化。';
-  else if(intensity && absolute && !behavior) msg='加入绝对排放以后，图像更完整；但仍然可能遗漏消费、出行等行为变化。';
-  else if(intensity && absolute && behavior) msg='三个维度同时打开后，系统不再只围绕一个数字优化；这更接近“真正问题”本身。';
-  else msg='指标组合正在变化，注意你究竟观察到了什么，又遗漏了什么。';
-  qs('#metricMessage').textContent=msg;
-}
-updateMetrics();
+}));
 
 /* Module 4 */
+function niceStep(maxVal, target=5){
+  const raw=maxVal/target;
+  const pow=10**Math.floor(Math.log10(Math.max(raw,1)));
+  const n=raw/pow;
+  let step=1;
+  if(n<=1) step=1; else if(n<=2) step=2; else if(n<=5) step=5; else step=10;
+  return step*pow;
+}
 function drawTime(){
   const debt=+qs('#debt').value;
   const save=+qs('#save').value;
-  const life=+qs('#life').value;
   const payback=debt/save;
+
+  // Automatic observation window: no arbitrary project-life slider.
+  const baseWindow=Math.max(10, Math.ceil(payback/5)*5 + 5);
+  const horizon=Math.min(Math.max(baseWindow,10),40);
+  const yMax=Math.max(debt*1.25, save*horizon*1.08, 10);
+
   qs('#debtText').textContent=`${debt} 单位`;
   qs('#debtBox').textContent=debt;
   qs('#saveText').textContent=`${save} 单位`;
   qs('#saveBox').textContent=save;
-  qs('#lifeText').textContent=`${life} 年`;
-  qs('#lifeBox').textContent=life;
   qs('#paybackValue').innerHTML=`${payback.toFixed(1)} <small>年</small>`;
-  qs('#paybackText').textContent =
-    payback<=life
-      ? `大约运行${payback.toFixed(1)}年后，累计避免排放超过建设阶段新增排放。`
-      : `在${life}年的预设寿命内还未“回本”，需要更长运行时间或更高的年度减排量。`;
+  qs('#paybackMini').textContent=payback.toFixed(1);
+  qs('#windowMini').textContent=horizon;
+  qs('#paybackText').textContent=`建设阶段形成的${debt}单位碳债，以每年${save}单位的减排速度偿还，理论回本时间为${payback.toFixed(1)}年。`;
 
-  const pts=18, W=534, H=182, x0=56, y0=28;
-  const maxY=Math.max(debt,save*life,1)*1.08;
-  function pt(i,val){
-    const x=x0+(i/(pts-1))*W;
-    const y=y0+H-(val/maxY)*H;
-    return [x,y];
+  const pts=61, W=534, H=182, x0=56, y0=28;
+  const xAt=t=>x0+(t/horizon)*W;
+  const yAt=v=>y0+H-(v/yMax)*H;
+
+  // Horizontal/vertical grid + tick labels
+  const grid=qs('#chartGrid'), xTicks=qs('#xTicks'), yTicks=qs('#yTicks');
+  grid.innerHTML=''; xTicks.innerHTML=''; yTicks.innerHTML='';
+  const xStep=niceStep(horizon,5);
+  for(let t=0;t<=horizon+1e-9;t+=xStep){
+    const x=xAt(t);
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('class','chart-grid'); ln.setAttribute('x1',x); ln.setAttribute('y1',y0); ln.setAttribute('x2',x); ln.setAttribute('y2',y0+H); grid.appendChild(ln);
+    const tx=document.createElementNS('http://www.w3.org/2000/svg','text'); tx.setAttribute('class','chart-axis'); tx.setAttribute('x',x); tx.setAttribute('y',226); tx.setAttribute('text-anchor','middle'); tx.textContent=`${Math.round(t)}`; xTicks.appendChild(tx);
   }
+  const yStep=niceStep(yMax,4);
+  for(let v=0;v<=yMax+1e-9;v+=yStep){
+    const y=yAt(v);
+    const ln=document.createElementNS('http://www.w3.org/2000/svg','line');
+    ln.setAttribute('class','chart-grid'); ln.setAttribute('x1',x0); ln.setAttribute('y1',y); ln.setAttribute('x2',x0+W); ln.setAttribute('y2',y); grid.appendChild(ln);
+    const tx=document.createElementNS('http://www.w3.org/2000/svg','text'); tx.setAttribute('class','chart-axis'); tx.setAttribute('x',48); tx.setAttribute('y',y+4); tx.setAttribute('text-anchor','end'); tx.textContent=`${Math.round(v)}`; yTicks.appendChild(tx);
+  }
+
+  // Cumulative avoided-emissions line: slope changes with annual avoided emissions.
   let savePath='';
   for(let i=0;i<pts;i++){
-    const year=(i/(pts-1))*life;
+    const year=(i/(pts-1))*horizon;
     const val=save*year;
-    const [x,y]=pt(i,val);
+    const x=xAt(year), y=yAt(val);
     savePath+=(i===0?'M':'L')+`${x.toFixed(1)},${y.toFixed(1)} `;
   }
   qs('#saveLine').setAttribute('d',savePath);
 
-  const [dx,dy]=pt(0,debt);
-  const [rx,ry]=pt(life,0);
+  // Horizontal construction-carbon-debt line.
+  const dy=yAt(debt);
   qs('#debtArea').setAttribute('d',`M ${x0},${dy.toFixed(1)} L ${x0+W},${dy.toFixed(1)} L ${x0+W},${y0+H} L ${x0},${y0+H} Z`);
 
-  const crossYear=Math.min(payback,life);
-  const cx=x0+(crossYear/life)*W;
+  // Payback point and vertical marker, if it falls inside the display window.
+  const visible=Math.min(payback,horizon);
+  const cx=xAt(visible), cy=yAt(Math.min(save*visible,debt));
   qs('#crossLine').setAttribute('d',`M ${cx.toFixed(1)},${y0} L ${cx.toFixed(1)},${y0+H}`);
-
-  const timeline=qs('#timelineItems');
-  timeline.innerHTML='';
-  for(let i=0;i<5;i++){
-    const year=Math.round((life/4)*i);
-    const on=year>=payback && payback<=life && i>0;
-    const div=document.createElement('div');
-    div.className='t-item';
-    div.innerHTML=`<div class="dot ${on?'on':''}"></div><strong>${year}年</strong><span>${i===0?'建设期':(on?'累计净减排':'运行')}</span>`;
-    timeline.appendChild(div);
-  }
+  const cp=qs('#crossPoint'); cp.setAttribute('cx',cx); cp.setAttribute('cy',cy); cp.setAttribute('opacity',payback<=horizon?1:0);
+  const pl=qs('#paybackLabel'); pl.setAttribute('x',Math.min(cx+6,520)); pl.setAttribute('y',40); pl.textContent=payback<=horizon?`回本 ${payback.toFixed(1)} 年`: '回本点超出图窗';
 }
-['debt','save','life'].forEach(id=>qs('#'+id).addEventListener('input',drawTime));
-
-/* Final check */
-function runFinal(){
-  const checks=[qs('#c1'),qs('#c2'),qs('#c3'),qs('#c4')];
-  checks.forEach((x,i)=>{
-    setTimeout(()=>{
-      x.className='status open';
-      x.textContent='已查看';
-      if(i===1) x.className='status attn';
-      if(i===2) x.className='status attn';
-    },i*430);
-  });
-}
-qs('#runCheck').addEventListener('click',runFinal);
+['debt','save'].forEach(id=>qs('#'+id).addEventListener('input',drawTime));
 
 qs('#resetAll').addEventListener('click',()=>{
   // reset module 1
@@ -729,18 +983,21 @@ qs('#resetAll').addEventListener('click',()=>{
   // reset module 2
   qs('#eff').value=20; qs('#reb').value=10; updateRebound();
   // reset module 3
+  qs('#activityInput').value=29;
+  qs('#intensityInput').value=18;
   qs('#tIntensity').classList.add('on');
   qs('#tAbsolute').classList.remove('on');
   qs('#tBehavior').classList.remove('on');
   updateMetrics();
   // reset module 4
-  qs('#debt').value=120; qs('#save').value=22; qs('#life').value=20; drawTime();
-  qsa('#final .status').forEach(x=>{x.className='status wait';x.textContent='待检验'});
+  qs('#debt').value=120; qs('#save').value=22; drawTime();
+  qs('#caseEff').value=10; updateRealCase();
   window.scrollTo({top:0,behavior:'smooth'});
 });
 
 updateBoundary(1);
 updateRebound();
+updateMetrics();
 drawTime();
 </script>
 </body>
